@@ -15,6 +15,7 @@ const MusicPlayer = () => {
       if (event.nextTrack !== undefined) {
         const playingTrack = await TrackPlayer.getTrack(event.nextTrack);
         setTrack(playingTrack || null);
+        setTrackImage(playingTrack?.artwork || '')
       }
     } else if (event.type === Event.PlaybackProgressUpdated) {
       setpos(event.position); // Update current position
@@ -26,7 +27,7 @@ const MusicPlayer = () => {
       if (currentTrack !== null) {
         const trackDetails = await TrackPlayer.getTrack(currentTrack);
         setTrack(trackDetails || null);
-        setTrackImage(trackDetails?.artwork || 'https://c.saavncdn.com/734/Champagne-Talk-Hindi-2022-20221008011951-500x500.jpg')
+        setTrackImage(trackDetails?.artwork || '')
       }
     };
     fetchCurrentTrack();
